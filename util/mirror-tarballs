@@ -32,9 +32,9 @@ $root/util/get-tarball "https://openresty.org/download/nginx-$ver.tar.gz" -O ngi
 tar -xzf nginx-$ver.tar.gz || exit 1
 cd nginx-$ver || exit 1
 
-echo "$info_txt applying the nginx-$main_ver-win32_max_err_str.patch"
-patch -p1 < $root/patches/nginx-$main_ver-win32_max_err_str.patch || exit 1
-echo
+#echo "$info_txt applying the nginx-$main_ver-win32_max_err_str.patch"
+#patch -p1 < $root/patches/nginx-$main_ver-win32_max_err_str.patch || exit 1
+#echo
 
 answer=`$root/util/ver-ge "$main_ver" 1.13.3`
 if [ "$answer" = "N" ]; then
@@ -555,10 +555,10 @@ mv openresty-drizzle-nginx-module-* drizzle-nginx-module-$ver || exit 1
 
 #################################
 
-ver=0.10.15
-$root/util/get-tarball "https://github.com/openresty/lua-nginx-module/archive/v$ver.tar.gz" -O lua-nginx-module-$ver.tar.gz || exit 1
+ver=760f7073da87da23bb4f024943089edfad35c72e
+$root/util/get-tarball "https://github.com/openresty/lua-nginx-module/archive/$ver.tar.gz" -O lua-nginx-module-$ver.tar.gz || exit 1
 tar -xzf lua-nginx-module-$ver.tar.gz || exit 1
-mv lua-nginx-module-$ver ngx_lua-$ver || exit 1
+mv lua-nginx-module-$ver ngx_lua-0$ver || exit 1
 
 #################################
 
@@ -569,10 +569,10 @@ mv openresty-lua-upstream-nginx-module-* ngx_lua_upstream-$ver || exit 1
 
 #################################
 
-ver=0.0.7
-$root/util/get-tarball "https://github.com/openresty/stream-lua-nginx-module/tarball/v$ver" -O stream-lua-nginx-module-$ver.tar.gz || exit 1
+ver=c7ac2234ec7a26bdcd3b17cbb5314f17344f9f5c
+$root/util/get-tarball "https://github.com/openresty/stream-lua-nginx-module/tarball/$ver" -O stream-lua-nginx-module-$ver.tar.gz || exit 1
 tar -xzf stream-lua-nginx-module-$ver.tar.gz || exit 1
-mv openresty-stream-lua-nginx-module-* ngx_stream_lua-$ver || exit 1
+mv openresty-stream-lua-nginx-module-* ngx_stream_lua-0$ver || exit 1
 
 #################################
 
@@ -685,7 +685,10 @@ mv openresty-opm-* opm-$ver || exit 1
 
 ver=2.1-20190912
 $root/util/get-tarball "https://github.com/openresty/luajit2/archive/v$ver.tar.gz" -O "LuaJIT-$ver.tar.gz" || exit 1
+#ver=d60ad85e8e7703c62f1cd9ce1dfc858933fe77c3
+#$root/util/get-tarball "https://github.com/openresty/luajit2/archive/$ver.tar.gz" -O "LuaJIT-$ver.tar.gz" || exit 1
 tar -xzf LuaJIT-$ver.tar.gz || exit 1
+#ver=2.1-20190912
 mv luajit2-* LuaJIT-$ver || exit 1
 
 cd LuaJIT-$ver || exit 1;
@@ -792,43 +795,43 @@ cd ..
 
 #################################
 
-ver=0.07
-$root/util/get-tarball "https://github.com/openresty/lua-resty-websocket/tarball/v$ver" -O "lua-resty-websocket-$ver.tar.gz" || exit 1
+ver=423e41c1d54f4b2548740ab31afff62fca8f3bd7
+$root/util/get-tarball "https://github.com/openresty/lua-resty-websocket/tarball/$ver" -O "lua-resty-websocket-$ver.tar.gz" || exit 1
 tar -xzf lua-resty-websocket-$ver.tar.gz || exit 1
-mv openresty-lua-resty-websocket-* lua-resty-websocket-$ver || exit 1
-cd lua-resty-websocket-$ver || exit 1
+mv openresty-lua-resty-websocket-* lua-resty-websocket-0$ver || exit 1
+cd lua-resty-websocket-0$ver || exit 1
 sed 's/\$(DESTDIR)\//$(DESTDIR)/g' Makefile > mk || exit 1
 mv mk Makefile || exit 1
 cd ..
 
 #################################
 
-ver=0.08
-$root/util/get-tarball "https://github.com/openresty/lua-resty-lock/tarball/v$ver" -O "lua-resty-lock-$ver.tar.gz" || exit 1
+ver=89017540b06d6548de90dac4d1c377fcaa53d449
+$root/util/get-tarball "https://github.com/openresty/lua-resty-lock/tarball/$ver" -O "lua-resty-lock-$ver.tar.gz" || exit 1
 tar -xzf lua-resty-lock-$ver.tar.gz || exit 1
-mv openresty-lua-resty-lock-* lua-resty-lock-$ver || exit 1
-cd lua-resty-lock-$ver || exit 1
+mv openresty-lua-resty-lock-* lua-resty-lock-0$ver || exit 1
+cd lua-resty-lock-0$ver || exit 1
 sed 's/\$(DESTDIR)\//$(DESTDIR)/g' Makefile > mk || exit 1
 mv mk Makefile || exit 1
 cd ..
 
 #################################
 
-ver=0.09
-$root/util/get-tarball "https://github.com/openresty/lua-resty-lrucache/tarball/v$ver" -O "lua-resty-lrucache-$ver.tar.gz" || exit 1
+ver=1861b4a856102c94222628d103e801f476861377
+$root/util/get-tarball "https://github.com/openresty/lua-resty-lrucache/tarball/$ver" -O "lua-resty-lrucache-$ver.tar.gz" || exit 1
 tar -xzf lua-resty-lrucache-$ver.tar.gz || exit 1
-mv openresty-lua-resty-lrucache-* lua-resty-lrucache-$ver || exit 1
-cd lua-resty-lrucache-$ver || exit 1
+mv openresty-lua-resty-lrucache-* lua-resty-lrucache-0$ver || exit 1
+cd lua-resty-lrucache-0$ver || exit 1
 sed 's/\$(DESTDIR)\//$(DESTDIR)/g' Makefile > mk || exit 1
 mv mk Makefile || exit 1
 cd ..
 
 #################################
 
-ver=0.1.17
-$root/util/get-tarball "https://github.com/openresty/lua-resty-core/tarball/v$ver" -O "lua-resty-core-$ver.tar.gz" || exit 1
+ver=92d81d3d2520e2f3bc431044b4caae9f5993f86d
+$root/util/get-tarball "https://github.com/openresty/lua-resty-core/tarball/$ver" -O "lua-resty-core-$ver.tar.gz" || exit 1
 tar -xzf lua-resty-core-$ver.tar.gz || exit 1
-mv openresty-lua-resty-core-* lua-resty-core-$ver || exit 1
+mv openresty-lua-resty-core-* lua-resty-core-0$ver || exit 1
 
 #################################
 
@@ -901,6 +904,7 @@ nginx_xml2pod=$bundle_dir/$resty_cli/bin/nginx-xml2pod
 #nginx_xml2pod=$HOME/git/resty-cli/bin/nginx-xml2pod
 
 # generate restydoc index from nginx docs
+if false; then
 
 curdir=$PWD
 cd $root/work/ || exit 1
@@ -941,6 +945,8 @@ for indir in bundle/*/; do
     echo "restydoc-index --outdir bundle $indir"
     $restydoc_index --outdir $curdir/bundle $indir || exit 1
 done
+
+fi
 
 cd $curdir || exit 1
 find bundle -name '*.md' -delete
